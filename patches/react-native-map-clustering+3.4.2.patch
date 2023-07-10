@@ -1,0 +1,22 @@
+diff --git a/node_modules/react-native-map-clustering/lib/ClusteredMarker.js b/node_modules/react-native-map-clustering/lib/ClusteredMarker.js
+index 73700ba..9feadf7 100755
+--- a/node_modules/react-native-map-clustering/lib/ClusteredMarker.js
++++ b/node_modules/react-native-map-clustering/lib/ClusteredMarker.js
+@@ -34,7 +34,7 @@ const ClusteredMarker = ({
+           style={[
+             styles.wrapper,
+             {
+-              backgroundColor: clusterColor,
++              backgroundColor: '#ff5858',
+               width,
+               height,
+               borderRadius: width / 2,
+@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
+   },
+   wrapper: {
+     position: "absolute",
+-    opacity: 0.5,
++    opacity: 0.7,
+     zIndex: 0,
+   },
+   cluster: {

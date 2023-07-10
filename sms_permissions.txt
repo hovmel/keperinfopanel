@@ -1,0 +1,11 @@
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+
+
+    react-native-android-sms-listener
+
+
+removed from mainApplication.java:
+
+import com.centaurwarchief.smslistener.SmsListenerPackage;
+import com.centaurwarchief.smslistener.SmsListenerPackage;

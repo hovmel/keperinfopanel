@@ -1,0 +1,118 @@
+diff --git a/node_modules/rn-swipeable-panel/src/Panel.tsx b/node_modules/rn-swipeable-panel/src/Panel.tsx
+index 6eb28e4..cf43c74 100644
+--- a/node_modules/rn-swipeable-panel/src/Panel.tsx
++++ b/node_modules/rn-swipeable-panel/src/Panel.tsx
+@@ -42,7 +42,8 @@ type SwipeablePanelProps = {
+   barStyle?: object;
+   barContainerStyle?: object,
+   allowTouchOutside?: boolean;
+-  scrollViewProps?: ScrollViewProps;
++  scrollViewProps?: ScrollViewProps
++  isEvent?: boolean
+ };
+ 
+ type MaybeAnimated<T> = T | Animated.Value;
+@@ -176,7 +177,7 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
+     if (newStatus === STATUS.CLOSED) newY = PANEL_HEIGHT;
+     else if (newStatus === STATUS.SMALL)
+       newY = this.state.orientation === 'portrait' ? FULL_HEIGHT - (smallPanelHeight ?? 400) : FULL_HEIGHT / 3;
+-    else if (newStatus === STATUS.LARGE) newY = 0;
++    else if (newStatus === STATUS.LARGE) newY = 80;
+ 
+     this.setState({
+       showComponent: true,
+@@ -239,41 +240,61 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
+             />
+           </TouchableWithoutFeedback>
+         )}
+-        <Animated.View
+-          style={[
+-            SwipeablePanelStyles.panel,
+-            {
+-              width: this.props.fullWidth ? deviceWidth : deviceWidth - 50,
+-              height: panelHeight,
+-            },
+-            { transform: this.state.pan.getTranslateTransform() },
+-            style,
+-          ]}
+-          {...this._panResponder.panHandlers}
+-        >
+-          {!this.props.noBar && <Bar barStyle={barStyle} barContainerStyle={barContainerStyle} />}
+-          {this.props.showCloseButton && (
+-            <Close rootStyle={closeRootStyle} iconStyle={closeIconStyle} onPress={this.props.onClose} />
+-          )}
+-          <ScrollView
+-            onTouchStart={() => {
+-              return false;
+-            }}
+-            onTouchEnd={() => {
+-              return false;
+-            }}
+-            contentContainerStyle={SwipeablePanelStyles.scrollViewContentContainerStyle}
+-            {...this.props.scrollViewProps}
++        {!this.props.isEvent ? (
++          <Animated.View
++            style={[
++              SwipeablePanelStyles.panel,
++              {
++                width: this.props.fullWidth ? deviceWidth : deviceWidth - 50,
++                height: panelHeight,
++              },
++              { transform: this.state.pan.getTranslateTransform() },
++              style,
++            ]}
++            {...this._panResponder.panHandlers}
+           >
+-            {this.state.canScroll ? (
+-              <TouchableHighlight>
+-                <React.Fragment>{this.props.children}</React.Fragment>
+-              </TouchableHighlight>
+-            ) : (
+-              this.props.children
++            {!this.props.noBar && <Bar barStyle={barStyle} barContainerStyle={barContainerStyle} />}
++            {this.props.showCloseButton && (
++              <Close rootStyle={closeRootStyle} iconStyle={closeIconStyle} onPress={this.props.onClose} />
+             )}
+-          </ScrollView>
+-        </Animated.View>
++            <ScrollView
++              onTouchStart={() => {
++                return false;
++              }}
++              onTouchEnd={() => {
++                return false;
++              }}
++              contentContainerStyle={SwipeablePanelStyles.scrollViewContentContainerStyle}
++              {...this.props.scrollViewProps}
++            >
++              {this.state.canScroll ? (
++                <TouchableHighlight>
++                  <React.Fragment>{this.props.children}</React.Fragment>
++                </TouchableHighlight>
++              ) : (
++                this.props.children
++              )}
++            </ScrollView>
++          </Animated.View>
++        ) : (
++          <Animated.View
++            style={[
++              SwipeablePanelStyles.panel,
++              {
++                width: this.props.fullWidth ? deviceWidth : deviceWidth - 50,
++                height: panelHeight,
++              },
++              { transform: this.state.pan.getTranslateTransform() },
++              style,
++            ]}
++          >
++            {!this.props.noBar && <Bar barStyle={barStyle} barContainerStyle={barContainerStyle} />}
++            {this.props.showCloseButton && (
++              <Close rootStyle={closeRootStyle} iconStyle={closeIconStyle} onPress={this.props.onClose} />
++            )}
++            {this.props.children}
++          </Animated.View>
++        )}
+       </Animated.View>
+     ) : null;
+   }
