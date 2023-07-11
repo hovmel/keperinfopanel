@@ -20,10 +20,9 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8492EA75277A1D99002E92B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8492EA74277A1D99002E92B9 /* Assets.xcassets */; };
 		856FB76C3EFE4AABB9B817B8 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 497DF7DDD93245608BA208B3 /* Roboto-BoldItalic.ttf */; };
-		94C0EBBF2A5C286A009324EE /* libInputMask.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C0EBBE2A5C286A009324EE /* libInputMask.a */; };
 		96500390099E4171833D1FC2 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18ABB655EF114447BFF15E6F /* Roboto-ThinItalic.ttf */; };
-		A762172056D96F04ABE81B73 /* libPods-keplerInfoPanel-keplerInfoPanelTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A69955358C32A0DCC9060DB /* libPods-keplerInfoPanel-keplerInfoPanelTests.a */; };
-		AF4079823A8A1B1EEE83D775 /* libPods-keplerInfoPanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C3DA7F6F3193C480263247 /* libPods-keplerInfoPanel.a */; };
+		99DA3EE45A0B89A453ECD576 /* libPods-keplerInfoPanel-keplerInfoPanelTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D2192A8FDB3B2FB89D4D66 /* libPods-keplerInfoPanel-keplerInfoPanelTests.a */; };
+		B961CCE3068B03A37C1EB064 /* libPods-keplerInfoPanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A80D8B585738BB79E93E07F /* libPods-keplerInfoPanel.a */; };
 		CB581CCB47904CE6AD62D50A /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AAA98DC58343C9B985D7BF /* Roboto-LightItalic.ttf */; };
 		E90C45EC3FC84E8ABE09075C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A212DD90FD344DC28D91D7A1 /* Roboto-Regular.ttf */; };
 		F87D8D3A3FF7408ABA05E677 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A34CDA58134229928FC47C /* Roboto-Italic.ttf */; };
@@ -43,6 +42,7 @@
 		00E356EE1AD99517003FC87E /* keplerInfoPanelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = keplerInfoPanelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* keplerInfoPanelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = keplerInfoPanelTests.m; sourceTree = "<group>"; };
+		04D2192A8FDB3B2FB89D4D66 /* libPods-keplerInfoPanel-keplerInfoPanelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-keplerInfoPanel-keplerInfoPanelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* keplerInfoPanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = keplerInfoPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = keplerInfoPanel/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = keplerInfoPanel/AppDelegate.m; sourceTree = "<group>"; };
@@ -50,23 +50,24 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = keplerInfoPanel/main.m; sourceTree = "<group>"; };
 		15AAA98DC58343C9B985D7BF /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		18ABB655EF114447BFF15E6F /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		19054BE66ADCA7A3666B6EB5 /* Pods-keplerInfoPanel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel.debug.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel.debug.xcconfig"; sourceTree = "<group>"; };
 		29E22EA1E7E84F53812B0A41 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
-		2A69955358C32A0DCC9060DB /* libPods-keplerInfoPanel-keplerInfoPanelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-keplerInfoPanel-keplerInfoPanelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D86690F1A217D25C5387C79 /* Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel-keplerInfoPanelTests/Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig"; sourceTree = "<group>"; };
-		35A680E5FA868137EFB96DAF /* Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel-keplerInfoPanelTests/Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig"; sourceTree = "<group>"; };
+		3A80D8B585738BB79E93E07F /* libPods-keplerInfoPanel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-keplerInfoPanel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		497DF7DDD93245608BA208B3 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
-		64C3DA7F6F3193C480263247 /* libPods-keplerInfoPanel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-keplerInfoPanel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ADCB05E51BF1AA0E42DB6F7 /* Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel-keplerInfoPanelTests/Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig"; sourceTree = "<group>"; };
 		666B9531A21C42C48BB263F3 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = keplerInfoPanel/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8492EA74277A1D99002E92B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94C0EBBE2A5C286A009324EE /* libInputMask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libInputMask.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		94C0EBC02A5C83D0009324EE /* libreact-native-text-input-mask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-text-input-mask.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94C0EBC22A5C83D8009324EE /* libInputMask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libInputMask.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A821262C5B84EB7A906E7F2 /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../assets/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		9CAAD4BBE04C46E493BEEBF7 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		A212DD90FD344DC28D91D7A1 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		C138F96458FFFA753114C1A8 /* Pods-keplerInfoPanel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel.release.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel.release.xcconfig"; sourceTree = "<group>"; };
+		BB719C145F77BFB864957BE0 /* Pods-keplerInfoPanel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel.release.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel.release.xcconfig"; sourceTree = "<group>"; };
 		D16E55378A2549228DCEE702 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		D6BCB676BA6D4281A7D8BC8F /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		DC5FADE4D6A71B58D0F3FA31 /* Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel-keplerInfoPanelTests/Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E4301EB7FCD60FC3BD69F01D /* Pods-keplerInfoPanel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keplerInfoPanel.debug.xcconfig"; path = "Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F6A34CDA58134229928FC47C /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		F8C12E747A3647B0B8F88F35 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
@@ -77,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A762172056D96F04ABE81B73 /* libPods-keplerInfoPanel-keplerInfoPanelTests.a in Frameworks */,
+				99DA3EE45A0B89A453ECD576 /* libPods-keplerInfoPanel-keplerInfoPanelTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,8 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C0EBBF2A5C286A009324EE /* libInputMask.a in Frameworks */,
-				AF4079823A8A1B1EEE83D775 /* libPods-keplerInfoPanel.a in Frameworks */,
+				B961CCE3068B03A37C1EB064 /* libPods-keplerInfoPanel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,10 +126,12 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94C0EBC22A5C83D8009324EE /* libInputMask.a */,
+				94C0EBC02A5C83D0009324EE /* libreact-native-text-input-mask.a */,
 				94C0EBBE2A5C286A009324EE /* libInputMask.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				64C3DA7F6F3193C480263247 /* libPods-keplerInfoPanel.a */,
-				2A69955358C32A0DCC9060DB /* libPods-keplerInfoPanel-keplerInfoPanelTests.a */,
+				3A80D8B585738BB79E93E07F /* libPods-keplerInfoPanel.a */,
+				04D2192A8FDB3B2FB89D4D66 /* libPods-keplerInfoPanel-keplerInfoPanelTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -156,10 +158,10 @@
 		4EFD4B12A5357979A0CE8E08 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				19054BE66ADCA7A3666B6EB5 /* Pods-keplerInfoPanel.debug.xcconfig */,
-				C138F96458FFFA753114C1A8 /* Pods-keplerInfoPanel.release.xcconfig */,
-				2D86690F1A217D25C5387C79 /* Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig */,
-				35A680E5FA868137EFB96DAF /* Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig */,
+				E4301EB7FCD60FC3BD69F01D /* Pods-keplerInfoPanel.debug.xcconfig */,
+				BB719C145F77BFB864957BE0 /* Pods-keplerInfoPanel.release.xcconfig */,
+				DC5FADE4D6A71B58D0F3FA31 /* Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig */,
+				5ADCB05E51BF1AA0E42DB6F7 /* Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -203,12 +205,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "keplerInfoPanelTests" */;
 			buildPhases = (
-				F8F6D35472E9834395B1D918 /* [CP] Check Pods Manifest.lock */,
+				1A430A8FADAA7E8B07D0BF75 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				38DAB4871FDE91AF582F014C /* [CP] Embed Pods Frameworks */,
-				13334C5F461AAE4B110B6EAD /* [CP] Copy Pods Resources */,
+				0DFD7F483A6BE50573D624D9 /* [CP] Embed Pods Frameworks */,
+				052F29EEDC9783718836FCA1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,14 +226,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "keplerInfoPanel" */;
 			buildPhases = (
-				F4BC631BE6D556CA0BF7FC78 /* [CP] Check Pods Manifest.lock */,
+				3E843DD2004CFA2DE2F9A50A /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				AB156BA9D871DC3A9957D447 /* [CP] Embed Pods Frameworks */,
-				95C00789F440D95F56D5F8D5 /* [CP] Copy Pods Resources */,
+				EE3BF70421CBDB9F90D51334 /* [CP] Embed Pods Frameworks */,
+				18A86C4959024EF313E7014D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -324,7 +326,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		13334C5F461AAE4B110B6EAD /* [CP] Copy Pods Resources */ = {
+		052F29EEDC9783718836FCA1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,7 +343,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel-keplerInfoPanelTests/Pods-keplerInfoPanel-keplerInfoPanelTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		38DAB4871FDE91AF582F014C /* [CP] Embed Pods Frameworks */ = {
+		0DFD7F483A6BE50573D624D9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -358,7 +360,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel-keplerInfoPanelTests/Pods-keplerInfoPanel-keplerInfoPanelTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		95C00789F440D95F56D5F8D5 /* [CP] Copy Pods Resources */ = {
+		18A86C4959024EF313E7014D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,24 +377,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AB156BA9D871DC3A9957D447 /* [CP] Embed Pods Frameworks */ = {
+		1A430A8FADAA7E8B07D0BF75 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-keplerInfoPanel-keplerInfoPanelTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4BC631BE6D556CA0BF7FC78 /* [CP] Check Pods Manifest.lock */ = {
+		3E843DD2004CFA2DE2F9A50A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,26 +421,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F8F6D35472E9834395B1D918 /* [CP] Check Pods Manifest.lock */ = {
+		EE3BF70421CBDB9F90D51334 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-keplerInfoPanel-keplerInfoPanelTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-keplerInfoPanel/Pods-keplerInfoPanel-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -488,7 +490,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D86690F1A217D25C5387C79 /* Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig */;
+			baseConfigurationReference = DC5FADE4D6A71B58D0F3FA31 /* Pods-keplerInfoPanel-keplerInfoPanelTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -496,7 +498,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = keplerInfoPanelTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,12 +517,12 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35A680E5FA868137EFB96DAF /* Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig */;
+			baseConfigurationReference = 5ADCB05E51BF1AA0E42DB6F7 /* Pods-keplerInfoPanel-keplerInfoPanelTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = keplerInfoPanelTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +541,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19054BE66ADCA7A3666B6EB5 /* Pods-keplerInfoPanel.debug.xcconfig */;
+			baseConfigurationReference = E4301EB7FCD60FC3BD69F01D /* Pods-keplerInfoPanel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -548,7 +550,7 @@
 				DEVELOPMENT_TEAM = ULB92CZG76;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = keplerInfoPanel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,7 +571,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C138F96458FFFA753114C1A8 /* Pods-keplerInfoPanel.release.xcconfig */;
+			baseConfigurationReference = BB719C145F77BFB864957BE0 /* Pods-keplerInfoPanel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -579,7 +581,7 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ULB92CZG76;
 				INFOPLIST_FILE = keplerInfoPanel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -648,14 +650,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -707,14 +709,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;

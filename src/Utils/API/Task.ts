@@ -1,15 +1,15 @@
-import {Buffer} from 'buffer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Buffer } from "buffer";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const getSundraxAuthorizationHeaders = (username, password) => {
   return new Headers({
     Authorization:
-      'Basic ' + Buffer.from(`${username}:${password}`).toString('base64'),
+      "Basic " + Buffer.from(`${username}:${password}`).toString("base64"),
   });
 };
 
 export const getSundraxAPI = async () => {
-  let sundraxAPI: string = (await AsyncStorage.getItem('currentServer')) || '';
+  let sundraxAPI: string = (await AsyncStorage.getItem("currentServer")) || "";
   //sundraxAPI = `http://kepler.plus/QulonWeb/api/`;
   sundraxAPI = `${sundraxAPI}api/`;
 

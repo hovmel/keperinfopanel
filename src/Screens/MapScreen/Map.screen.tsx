@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import YaMap, {Marker, ClusteredYamap} from 'react-native-yamap';
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import YaMap, { Marker, ClusteredYamap } from "react-native-yamap";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   Alert,
   Dimensions,
@@ -9,18 +9,19 @@ import {
   PermissionsAndroid,
   Platform,
   StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
   View,
-} from 'react-native';
-import {styles} from './styles';
-import {CircleButton} from '../../Components/CircleButton';
-import Geolocation, {GeoError} from 'react-native-geolocation-service';
-import {translate} from '../../Translations';
-import {useFocusEffect} from '@react-navigation/native';
-import {MapFilterOverlay} from '../../Components/MapFilterOverlay';
-import {markerActions} from '../../models/markers';
-import MapView from 'react-native-map-clustering';
+} from "react-native";
+import { styles } from "./styles";
+import { CircleButton } from "../../Components/CircleButton";
+import Geolocation, { GeoError } from "react-native-geolocation-service";
+import { translate } from "../../Translations";
+import { useFocusEffect } from "@react-navigation/native";
+import { MapFilterOverlay } from "../../Components/MapFilterOverlay";
+import { markerActions } from "../../models/markers";
+import MapView from "react-native-map-clustering";
 
 import {
   getAllNestedItems,
@@ -35,56 +36,56 @@ import {
   getObjectTelemetry,
   getPlugShareDevices,
   loadAllMarkers,
-} from '../../Utils/API/Devices';
-import {errorsGPS} from '../../Constants/ErrorsGPS';
-import {filterMarkersToRender, findMarkerById} from '../../Utils/Markers';
-import {MapInfoLabel} from '../../Components/MapInfoBlock/MapInfoBlock';
-import {PROVIDER_GOOGLE, Marker as GoogleMarker} from 'react-native-maps';
+} from "../../Utils/API/Devices";
+import { errorsGPS } from "../../Constants/ErrorsGPS";
+import { filterMarkersToRender, findMarkerById } from "../../Utils/Markers";
+import { MapInfoLabel } from "../../Components/MapInfoBlock/MapInfoBlock";
+import { PROVIDER_GOOGLE, Marker as GoogleMarker } from "react-native-maps";
 import {
   GeolocationError,
   MapFilters,
   MarkerData,
   PlugShareMarker,
   Position,
-} from './Map.types';
-import {CameraPosition} from 'react-native-yamap/src/interfaces';
-import BottomMenu from '../../Components/BottomMenu';
-import {SwipeablePanel} from 'rn-swipeable-panel';
-import ObjectsPart from '../../Components/ObjectsPart';
-import PassportsPart from '../../Components/PassportsPart';
-import StatesPart from '../../Components/StatesPart';
-import ControlPart from '../../Components/ControlPart';
-import NavigationMenu from '../../Components/NavigationMenu/NavigationMenu';
-import {useSelector} from 'react-redux';
-import {useActionWithPayload} from '../../hooks/useAction';
+} from "./Map.types";
+import { CameraPosition } from "react-native-yamap/src/interfaces";
+import BottomMenu from "../../Components/BottomMenu";
+import { SwipeablePanel } from "rn-swipeable-panel";
+import ObjectsPart from "../../Components/ObjectsPart";
+import PassportsPart from "../../Components/PassportsPart";
+import StatesPart from "../../Components/StatesPart";
+import ControlPart from "../../Components/ControlPart";
+import NavigationMenu from "../../Components/NavigationMenu/NavigationMenu";
+import { useSelector } from "react-redux";
+import { useActionWithPayload } from "../../hooks/useAction";
 import {
   allMarkersIconsSelector,
   allObjectsSelector,
   mapTypeSelector,
   markersToRenderSelector,
   nestedObjectsSelector,
-} from '../../models/markers/selectors';
-import {MarkerImage} from './MarkerImage';
-import {logIn} from '../../Utils/API/User';
-import MarkerIcons from '../../Constants/MarkerIcons';
-import _ from 'lodash';
-import EventsPart from '../../Components/EventsPart';
-import Star from '../../../assets/icons/star.png';
-import StarYellow from '../../../assets/icons/favorite_active.png';
-import Search from '../../../assets/icons/search2.png';
-import useActiveObject from '../../hooks/useActiveObject';
-import {getUserFavorites} from '../../Utils/API/Favorites';
-import moment from 'moment';
-import getFormattedTime from '../../Utils/getFormattedTime';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import chooseObject from '../ChooseObject';
-import {getStatesInfo} from '../../Utils/API/States';
-import markersToRender from '../../Constants/markersToRenderOfSundrax.json';
-import {Fonts} from '../../Constants/Fonts';
-import Colors from '../../Constants/Colors';
+} from "../../models/markers/selectors";
+import { MarkerImage } from "./MarkerImage";
+import { logIn } from "../../Utils/API/User";
+import MarkerIcons from "../../Constants/MarkerIcons";
+import _ from "lodash";
+import EventsPart from "../../Components/EventsPart";
+import Star from "../../../assets/icons/star.png";
+import StarYellow from "../../../assets/icons/favorite_active.png";
+import Search from "../../../assets/icons/search2.png";
+import useActiveObject from "../../hooks/useActiveObject";
+import { getUserFavorites } from "../../Utils/API/Favorites";
+import moment from "moment";
+import getFormattedTime from "../../Utils/getFormattedTime";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import chooseObject from "../ChooseObject";
+import { getStatesInfo } from "../../Utils/API/States";
+import markersToRender from "../../Constants/markersToRenderOfSundrax.json";
+import { Fonts } from "../../Constants/Fonts";
+import Colors from "../../Constants/Colors";
 
 // @ts-ignore
-const MapScreen = ({route, navigation}) => {
+const MapScreen = ({ route, navigation }) => {
   const zoomToOpenMarker: number = 19;
   const zoomDuration: number = 1;
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -93,9 +94,9 @@ const MapScreen = ({route, navigation}) => {
 
   const [markers, setMarkers] = useState<MarkerData[]>([]);
   const [plugShareMarkers, setPlugShareMarkers] = useState<PlugShareMarker[]>(
-    [],
+    []
   );
-  const [activeScreen, setActiveScreen] = useState<string>('');
+  const [activeScreen, setActiveScreen] = useState<string>("");
   const [modalMenuShow, setModalMenuShow] = useState(false);
 
   const [showMarkerDetail, setShowMarkerDetail] = useState(false);
@@ -116,10 +117,10 @@ const MapScreen = ({route, navigation}) => {
   >(undefined);
 
   const setMarkersToStorage = useActionWithPayload(
-    markerActions.setMarkersToLoad,
+    markerActions.setMarkersToLoad
   );
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [searchedObjects, setSearchedObjects] = useState<never[]>();
 
   const bottomPanelRef = useRef(null);
@@ -132,7 +133,7 @@ const MapScreen = ({route, navigation}) => {
   const [controlsModes, setControlsModes] = useState({});
   const [events, setEvents] = useState([]);
   const [eventsLoading, setEventsLoading] = useState(false);
-  const [eventsRange, setEventsRange] = useState('today');
+  const [eventsRange, setEventsRange] = useState("today");
   const [statesInfo, setStatesInfo] = useState([]);
   const [eventsNotFormatted, setEventsNotFormatted] = useState([]);
   const [lastState, setLastState] = useState([]);
@@ -147,27 +148,27 @@ const MapScreen = ({route, navigation}) => {
   const mapType = useSelector(mapTypeSelector) || [];
 
   const [isSundraxServer, setIsSundraxServer] = useState<
-    'yes' | 'no' | 'loading'
-  >('loading');
+    "yes" | "no" | "loading"
+  >("loading");
 
   const [countryCode, setCountryCode] = useState();
 
   const objectsPressed = async () => {
-    setActiveScreen(activeScreen !== 'objects' ? 'objects' : '');
+    setActiveScreen(activeScreen !== "objects" ? "objects" : "");
     /*setObjects(await getAllNestedItems());*/
   };
 
   const passportsPressed = () => {
-    setActiveScreen(activeScreen !== 'passports' ? 'passports' : '');
+    setActiveScreen(activeScreen !== "passports" ? "passports" : "");
   };
   const statesPressed = () => {
-    setActiveScreen(activeScreen !== 'states' ? 'states' : '');
+    setActiveScreen(activeScreen !== "states" ? "states" : "");
   };
   const controlPressed = () => {
-    setActiveScreen(activeScreen !== 'control' ? 'control' : '');
+    setActiveScreen(activeScreen !== "control" ? "control" : "");
   };
   const eventsPressed = () => {
-    setActiveScreen(activeScreen !== 'events' ? 'events' : '');
+    setActiveScreen(activeScreen !== "events" ? "events" : "");
   };
 
   const singleObjectPressed = async (
@@ -175,10 +176,10 @@ const MapScreen = ({route, navigation}) => {
     id,
     name,
     type,
-    moveToObject = true,
+    moveToObject = true
   ) => {
-    setPassports('loading');
-    setActiveScreen('passports');
+    setPassports("loading");
+    setActiveScreen("passports");
 
     if (!object.Id) {
       object.Id = object.id;
@@ -192,12 +193,12 @@ const MapScreen = ({route, navigation}) => {
             Name: name,
             Id: id,
           }
-        : null,
+        : null
     );
 
     const coordinates =
       passportsData &&
-      passportsData?.Categories?.find(item => item.Type === 'Coordinates')
+      passportsData?.Categories?.find((item) => item.Type === "Coordinates")
         ?.Properties[1]?.Value;
     if (coordinates && moveToObject) {
       setMapCenter(
@@ -205,7 +206,7 @@ const MapScreen = ({route, navigation}) => {
           lat: coordinates.Latitude,
           lon: coordinates.Longitude,
         },
-        mapRefYandex,
+        mapRefYandex
       );
     }
     setStates([]);
@@ -219,10 +220,10 @@ const MapScreen = ({route, navigation}) => {
     const controlsData = await getObjectControls(object.Id);
     setControls(controlsData);
 
-    setPassports(prev =>
+    setPassports((prev) =>
       prev
-        ? {...prev, timeFromStates: controlsData?.TS}
-        : {timeFromStates: controlsData?.TS},
+        ? { ...prev, timeFromStates: controlsData?.TS }
+        : { timeFromStates: controlsData?.TS }
     );
 
     const statesData = await getObjectStatus(id);
@@ -235,7 +236,7 @@ const MapScreen = ({route, navigation}) => {
 
     setStates(statesData);
 
-    await changeEventsRange('today', object.Id);
+    await changeEventsRange("today", object.Id);
 
     /*    const telemetryData = await getObjectTelemetry(id);
     if (
@@ -250,29 +251,29 @@ const MapScreen = ({route, navigation}) => {
     setTelemetry({...telemetryData, Name: name, Id: id, DeviceType: type});*/
 
     let controlsModes = passportsData?.Categories?.find(
-      item => item.Type === 'Modes',
+      (item) => item.Type === "Modes"
     );
 
-    if (object?.DeviceType === 'Photo') {
+    if (object?.DeviceType === "Photo") {
       let photosIds = await getObjectPhotos(object.Id);
       photosIds =
         photosIds?.sort((prev, next) =>
-          moment(prev.TS).isSameOrAfter(moment(next.TS)) ? 1 : -1,
+          moment(prev.TS).isSameOrAfter(moment(next.TS)) ? 1 : -1
         ) || [];
       setPhotoIds(photosIds);
       setPhotoIndex(photosIds?.length - 1 || 0);
     }
 
-    controlsModes = controlsModes?.Properties?.map(item => ({
+    controlsModes = controlsModes?.Properties?.map((item) => ({
       [item.Name]: item.Value,
     }));
 
     if (controlsModes) {
       controlsModes = controlsModes.reduce(
-        (accumulator, currentValue) => ({...accumulator, ...currentValue}),
-        {},
+        (accumulator, currentValue) => ({ ...accumulator, ...currentValue }),
+        {}
       );
-      controlsModes.PhotoType = object?.DeviceType === 'Photo';
+      controlsModes.PhotoType = object?.DeviceType === "Photo";
       setControlsModes(controlsModes);
     }
 
@@ -280,7 +281,7 @@ const MapScreen = ({route, navigation}) => {
     setLastState(statusData);
   };
 
-  const changeEventsRange = async (val = 'today', id) => {
+  const changeEventsRange = async (val = "today", id) => {
     setEventsLoading(true);
     setEventsRange(val);
     const eventsData = await getDeviceEvents(id || activeObject.Id, val);
@@ -288,11 +289,11 @@ const MapScreen = ({route, navigation}) => {
     sortEvents(1, eventsData);
   };
 
-  const convertEvents = events => {
+  const convertEvents = (events) => {
     const newData = [];
     events.forEach((item, index) => {
-      Object.keys(item).forEach(key => {
-        if (key !== 'ObjectId' && key !== 'Status' && key !== 'TS') {
+      Object.keys(item).forEach((key) => {
+        if (key !== "ObjectId" && key !== "Status" && key !== "TS") {
           if (index === 0) {
             newData.push({
               name: key,
@@ -300,18 +301,18 @@ const MapScreen = ({route, navigation}) => {
               data: [item[key]],
             });
           } else {
-            newData.find(item => item.name === key).data.push(item[key]);
+            newData.find((item) => item.name === key).data.push(item[key]);
           }
-        } else if (key === 'TS') {
+        } else if (key === "TS") {
           const newDate = getFormattedTime(item.TS, countryCode);
           if (index === 0) {
             newData.push({
-              name: 'Date',
+              name: "Date",
               isChecked: true,
               data: [newDate],
             });
           } else {
-            newData.find(item => item.name === 'Date').data.push(newDate);
+            newData.find((item) => item.name === "Date").data.push(newDate);
           }
         }
       });
@@ -327,92 +328,92 @@ const MapScreen = ({route, navigation}) => {
       sorted = convertEvents(
         data.sort((first, second) => {
           return first.TS < second.TS ? -1 : 1;
-        }),
+        })
       );
     } else {
       sorted = convertEvents(
         data.sort((first, second) => {
           return first.TS < second.TS ? 1 : -1;
-        }),
+        })
       );
     }
     setEvents(sorted);
     setEventsLoading(false);
   };
 
-  const convertPassports = passports => {
+  const convertPassports = (passports) => {
     const newPassports: any = {};
     if (passports) {
-      passports.Categories.forEach(category => {
+      passports.Categories.forEach((category) => {
         newPassports[category.Type] = category.Properties.reduce(
           (prev, property) =>
             Object.assign(prev, {
-              [category.Type === 'Files'
+              [category.Type === "Files"
                 ? property.Name + property.Value
                 : property.Name
                 ? property.Name
                 : property.Type]: property.Value,
             }),
-          {},
+          {}
         );
       });
     } else {
-      console.log('This object does not have passports');
+      console.log("This object does not have passports");
     }
     return newPassports;
   };
 
-  const convertJacks = jacks => {
+  const convertJacks = (jacks) => {
     return jacks
-      ? jacks.map(jack => ({...jack, Value: jack.Value !== '0'}))
+      ? jacks.map((jack) => ({ ...jack, Value: jack.Value !== "0" }))
       : jacks;
   };
 
-  const onScanRead = async id => {
+  const onScanRead = async (id) => {
     const info = await getObjectById(id);
     await singleObjectPressed(info, id, info.Name, info.DeviceType);
   };
 
   const searchStarPressed = () => {
     handleSearch(search, !isSearchStarPressed);
-    setSearchStartPressed(prev => !prev);
+    setSearchStartPressed((prev) => !prev);
   };
 
   const buttons = [
     {
-      name: 'objects',
+      name: "objects",
       disabled: false,
       onPress: objectsPressed,
-      mainImageSource: require('../../../assets/icons/Objects.png'),
-      activeImageSource: require('../../../assets/icons/objects_blue.png'),
+      mainImageSource: require("../../../assets/icons/Objects.png"),
+      activeImageSource: require("../../../assets/icons/objects_blue.png"),
     },
     {
-      name: 'passports',
+      name: "passports",
       disabled: !chosenObjectId,
       onPress: passportsPressed,
-      mainImageSource: require('../../../assets/icons/Passport.png'),
-      activeImageSource: require('../../../assets/icons/passport_blue.png'),
+      mainImageSource: require("../../../assets/icons/Passport.png"),
+      activeImageSource: require("../../../assets/icons/passport_blue.png"),
     },
     {
-      name: 'events',
+      name: "events",
       disabled: !chosenObjectId,
       onPress: eventsPressed,
-      mainImageSource: require('../../../assets/icons/Events.png'),
-      activeImageSource: require('../../../assets/icons/events_blue.png'),
+      mainImageSource: require("../../../assets/icons/Events.png"),
+      activeImageSource: require("../../../assets/icons/events_blue.png"),
     },
     {
-      name: 'states',
+      name: "states",
       disabled: !chosenObjectId,
       onPress: statesPressed,
-      mainImageSource: require('../../../assets/icons/States.png'),
-      activeImageSource: require('../../../assets/icons/states_blue.png'),
+      mainImageSource: require("../../../assets/icons/States.png"),
+      activeImageSource: require("../../../assets/icons/states_blue.png"),
     },
     {
-      name: 'control',
+      name: "control",
       disabled: !chosenObjectId,
       onPress: controlPressed,
-      mainImageSource: require('../../../assets/icons/Control.png'),
-      activeImageSource: require('../../../assets/icons/control_blue.png'),
+      mainImageSource: require("../../../assets/icons/Control.png"),
+      activeImageSource: require("../../../assets/icons/control_blue.png"),
     },
   ];
 
@@ -425,7 +426,7 @@ const MapScreen = ({route, navigation}) => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log('CHANGING SCALE');
+      console.log("CHANGING SCALE");
       setMarkerScale(0.8);
     }, 2000);
     if (activeObject.Id) {
@@ -433,19 +434,19 @@ const MapScreen = ({route, navigation}) => {
         activeObject,
         activeObject.Id,
         activeObject.Name,
-        activeObject.DeviceType,
+        activeObject.DeviceType
       );
     }
     (async () => {
-      const currentServerName = await AsyncStorage.getItem('currentServer');
+      const currentServerName = await AsyncStorage.getItem("currentServer");
       setIsSundraxServer(
-        currentServerName === 'http://sundrax1.zapto.org/QulonWeb/'
-          ? 'yes'
-          : 'no',
+        currentServerName === "http://sundrax1.zapto.org/QulonWeb/"
+          ? "yes"
+          : "no"
       );
 
       setFavoriteObjectsIds(await getUserFavorites());
-      const code = await AsyncStorage.getItem('country_code');
+      const code = await AsyncStorage.getItem("country_code");
       setCountryCode(code);
     })();
   }, []);
@@ -466,14 +467,14 @@ const MapScreen = ({route, navigation}) => {
 
   const setMapCenter = (point: Position, map) => {
     if (
-      (mapType === 'Yandex' && !mapRefYandex?.setCenter) ||
-      (mapType === 'Google' && !mapRefGoogle?.current?.animateToRegion)
+      (mapType === "Yandex" && !mapRefYandex?.setCenter) ||
+      (mapType === "Google" && !mapRefGoogle?.current?.animateToRegion)
     ) {
-      console.log('Map ref undefined, cannot set map center', mapType);
+      console.log("Map ref undefined, cannot set map center", mapType);
       return;
     }
 
-    if (mapType === 'Yandex') {
+    if (mapType === "Yandex") {
       mapRefYandex?.setCenter(point, 15, 0, 0, zoomDuration);
     } else {
       console.log(point);
@@ -484,7 +485,7 @@ const MapScreen = ({route, navigation}) => {
           latitudeDelta: 0.0002,
           longitudeDelta: 0.0002,
         },
-        1000,
+        1000
       );
     }
   };
@@ -498,7 +499,7 @@ const MapScreen = ({route, navigation}) => {
     let allMarkers = await loadAllMarkers();
     // console.log('All markers: ', allMarkers);
     if (!allMarkers) {
-      Alert.alert('Error', 'Loading error. Check your network connection');
+      Alert.alert("Error", "Loading error. Check your network connection");
       return;
     }
 
@@ -511,7 +512,7 @@ const MapScreen = ({route, navigation}) => {
   const setGeolocationErrorByGPSPermission = (isGranted: boolean) => {
     if (!isGranted) {
       setGeolocationError({
-        message: translate('enable_geolocation'),
+        message: translate("enable_geolocation"),
         type: errorsGPS.NO_PERMISSION_GRANTED,
       });
     } else {
@@ -522,63 +523,63 @@ const MapScreen = ({route, navigation}) => {
   const handleGeolocationError = (error: GeoError) => {
     if (error.message === errorsGPS.NO_LOCATION_PROVIDER) {
       setGeolocationError({
-        message: translate('enable_gps'),
+        message: translate("enable_gps"),
         type: errorsGPS.NO_LOCATION_PROVIDER,
       });
     } else {
       setGeolocationError(undefined);
     }
 
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       PermissionsAndroid.check(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      ).then(granted => setGeolocationErrorByGPSPermission(granted));
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      ).then((granted) => setGeolocationErrorByGPSPermission(granted));
     } else {
-      Geolocation.requestAuthorization('always').then(status => {
-        setGeolocationErrorByGPSPermission(status === 'granted');
+      Geolocation.requestAuthorization("always").then((status) => {
+        setGeolocationErrorByGPSPermission(status === "granted");
       });
     }
   };
 
   const findUserOnMap = (map: ClusteredYamap) => {
     Geolocation.getCurrentPosition(
-      info => {
+      (info) => {
         if (info.coords) {
           const lon = info.coords.longitude;
           const lat = info.coords.latitude;
           setMapCenter(
-            {lon: lon, lat: lat},
-            mapType === 'Yandex' ? mapRefYandex : mapRefGoogle,
+            { lon: lon, lat: lat },
+            mapType === "Yandex" ? mapRefYandex : mapRefGoogle
           );
-          setUserPosition({lat: lat, lon: lon});
+          setUserPosition({ lat: lat, lon: lon });
           setGeolocationError(undefined);
         } else {
           setGeolocationError({
-            message: translate('enable_geolocation'),
+            message: translate("enable_geolocation"),
             type: errorsGPS.NO_LOCATION_PROVIDER,
           });
         }
       },
-      (error: GeoError) => handleGeolocationError(error),
+      (error: GeoError) => handleGeolocationError(error)
     );
   };
 
   const setMarkerCenter = (marker, coords) => {
     //console.log('Zooming to marker', marker, 'with coordinates:', coords);
-    console.log('centering');
+    console.log("centering");
     console.log(
       coords || marker.coordinates,
       zoomToOpenMarker + 0.1,
-      zoomDuration,
+      zoomDuration
     );
 
-    if (mapType === 'Yandex') {
+    if (mapType === "Yandex") {
       mapRefYandex?.setCenter(
         coords || marker.coordinates,
         zoomToOpenMarker + 0.1,
         0,
         0,
-        zoomDuration,
+        zoomDuration
       );
     } else {
       mapRefGoogle?.animateToCoordinate(
@@ -586,11 +587,11 @@ const MapScreen = ({route, navigation}) => {
           latitude: marker.coordinates.lat,
           longitude: marker.coordinates.lon,
         },
-        1000,
+        1000
       );
     }
 
-    console.log('centering end');
+    console.log("centering end");
   };
 
   /*  useEffect(() => {
@@ -600,7 +601,7 @@ const MapScreen = ({route, navigation}) => {
   }, [mapRefYandex]);*/
 
   useEffect(() => {
-    const {objectFromFavorites} = route?.params || {};
+    const { objectFromFavorites } = route?.params || {};
     if (!objectFromFavorites) {
       //findUserOnMap(mapRefYandex);
     }
@@ -608,7 +609,7 @@ const MapScreen = ({route, navigation}) => {
 
     if (!markersToRender || !markersToRender.length) {
       initializeMarkers().then(() => {
-        console.log('markers were initialized');
+        console.log("markers were initialized");
         // update map after setting markers
         setTimeout(() => {
           mapRefYandex?.forceUpdate();
@@ -617,7 +618,7 @@ const MapScreen = ({route, navigation}) => {
     }
 
     Geolocation.watchPosition(
-      info => {
+      (info) => {
         if (info.coords) {
           setUserPosition({
             lat: info.coords.latitude,
@@ -626,8 +627,8 @@ const MapScreen = ({route, navigation}) => {
           setGeolocationError(undefined);
         }
       },
-      error => handleGeolocationError(error),
-      {enableHighAccuracy: true},
+      (error) => handleGeolocationError(error),
+      { enableHighAccuracy: true }
     );
 
     if (objectFromFavorites) {
@@ -635,35 +636,35 @@ const MapScreen = ({route, navigation}) => {
         objectFromFavorites,
         objectFromFavorites.Id,
         objectFromFavorites.Name,
-        objectFromFavorites.DeviceType,
+        objectFromFavorites.DeviceType
       );
     }
   }, []);
 
   const onMarkerPressed = (marker, open) => {
     if (open) {
-      console.log('opening marker');
+      console.log("opening marker");
       singleObjectPressed(
         marker,
         marker.id,
         marker.name,
         marker.DeviceType,
-        false,
+        false
       );
       return;
     }
     mapRefYandex?.getCameraPosition((position: CameraPosition) => {
-      console.log('marker pressed', position.zoom, zoomToOpenMarker);
+      console.log("marker pressed", position.zoom, zoomToOpenMarker);
       if (position.zoom < zoomToOpenMarker) {
         setMarkerCenter(marker);
       } else {
-        console.log('opening marker');
+        console.log("opening marker");
         singleObjectPressed(
           marker,
           marker.id,
           marker.name,
           marker.DeviceType,
-          false,
+          false
         );
       }
     });
@@ -671,14 +672,14 @@ const MapScreen = ({route, navigation}) => {
 
   const handleSearch = (
     val: string,
-    searchStarPressed: boolean = isSearchStarPressed,
+    searchStarPressed: boolean = isSearchStarPressed
   ) => {
     setSearch(val);
 
     if (!val) {
       if (searchStarPressed) {
         return setSearchedObjects(
-          allObjects.filter(object => favoriteObjectsIds.includes(object.Id)),
+          allObjects.filter((object) => favoriteObjectsIds.includes(object.Id))
         );
       } else {
         return setSearchedObjects(undefined);
@@ -686,7 +687,7 @@ const MapScreen = ({route, navigation}) => {
     }
     setSearchedObjects(
       val.length
-        ? allObjects.filter(object => {
+        ? allObjects.filter((object) => {
             let favoriteFlag = true;
             if (searchStarPressed) {
               favoriteFlag = favoriteObjectsIds.includes(object.Id);
@@ -696,21 +697,21 @@ const MapScreen = ({route, navigation}) => {
               favoriteFlag
             );
           })
-        : undefined,
+        : undefined
     );
   };
 
   useEffect(
     () =>
-      navigation.addListener('beforeRemove', e => {
+      navigation.addListener("beforeRemove", (e) => {
         e.preventDefault();
         if (activeScreen) {
-          setActiveScreen('');
+          setActiveScreen("");
         } else {
           navigation.dispatch(e.data.action);
         }
       }),
-    [activeScreen],
+    [activeScreen]
   );
 
   useEffect(() => {
@@ -723,7 +724,7 @@ const MapScreen = ({route, navigation}) => {
             lon: marker.coordinates.lon,
             lat: marker.coordinates.lat,
           },
-          mapRefYandex,
+          mapRefYandex
         );
         setMarkerCenter(marker);
         openMarkerDetail(markers, markerId);
@@ -738,21 +739,21 @@ const MapScreen = ({route, navigation}) => {
   const openMarkerDetail = (_markers: MarkerData[], markerId: string) => {
     const markerToOpen = findMarkerById(_markers, markerId);
     if (!markerToOpen) {
-      console.warn('Marker to open not found');
+      console.warn("Marker to open not found");
       return;
     }
     setActiveObject(markerToOpen!);
     setShowMarkerDetail(true);
   };
 
-  const starPressed = item => {
+  const starPressed = (item) => {
     item.isFavorite = !item.isFavorite;
     //setObjects([...objects]);
   };
 
   return (
     <View style={styles.container}>
-      {showFilters ? (
+      {/* {showFilters ? (
         <MapFilterOverlay
           mapFilters={mapFilters}
           setMapFilters={setMapFilters}
@@ -762,7 +763,7 @@ const MapScreen = ({route, navigation}) => {
       {!activeScreen ? (
         <CircleButton
           style={styles.leftButton}
-          imageSource={require('../../../assets/icons/aim.png')}
+          imageSource={require("../../../assets/icons/aim.png")}
           onPress={() => {
             findUserOnMap(mapRefYandex);
           }}
@@ -770,12 +771,12 @@ const MapScreen = ({route, navigation}) => {
       ) : null}
       <CircleButton
         style={[styles.backButton, activeScreen && styles.backButtonRotated]}
-        imageSource={require('../../../assets/icons/left-arrow.png')}
+        imageSource={require("../../../assets/icons/left-arrow.png")}
         onPress={() => {
           navigation.goBack();
         }}
       />
-      {activeScreen === 'objects' && (
+      {activeScreen === "objects" && (
         <View style={styles.inputView}>
           <TouchableOpacity onPress={searchStarPressed} activeOpacity={0.2}>
             <Image
@@ -785,7 +786,7 @@ const MapScreen = ({route, navigation}) => {
           </TouchableOpacity>
 
           <TextInput
-            placeholder={translate('search_placeholder')}
+            placeholder={translate("search_placeholder")}
             defaultValue={search}
             onChangeText={handleSearch}
             style={styles.input}
@@ -797,57 +798,57 @@ const MapScreen = ({route, navigation}) => {
         </View>
       )}
       {/*<CircleButton
-        style={styles.accountButton}
-        imageSource={require('../../../assets/icons/account.png')}
-        onPress={() => {
-          setModalMenuShow(true);
-        }}
-      />*/}
+  style={styles.accountButton}
+  imageSource={require('../../../assets/icons/account.png')}
+  onPress={() => {
+    setModalMenuShow(true);
+  }}
+/>*/}
       {/*<CircleButton
-        style={styles.filterButton}
-        imageSource={require('../../../assets/icons/filter.png')}
-        onPress={() => setShowFilters(!showFilters)}
-      />*/}
-      {!activeScreen ? (
+  style={styles.filterButton}
+  imageSource={require('../../../assets/icons/filter.png')}
+  onPress={() => setShowFilters(!showFilters)}
+/>*/}
+      {/* {!activeScreen ? (
         <CircleButton
           style={styles.rightButton}
-          imageSource={require('../../../assets/icons/scan.png')}
+          imageSource={require("../../../assets/icons/scan.png")}
           onPress={() => {
-            navigation.navigate('QRCodeScannerScreen', {onRead: onScanRead});
+            navigation.navigate("QRCodeScannerScreen", { onRead: onScanRead });
           }}
         />
       ) : null}
       <MapInfoLabel
-        style={{marginBottom: 30}}
-        text={geolocationError?.message || ''}
+        style={{ marginBottom: 30 }}
+        text={geolocationError?.message || ""}
         onPress={Linking.openSettings}
         visible={geolocationError !== undefined}
         disableTouchable={false}
       />
       <MapInfoLabel
-        style={{marginBottom: geolocationError !== undefined ? 90 : 30}}
-        text={translate('markers_loading')}
+        style={{ marginBottom: geolocationError !== undefined ? 90 : 30 }}
+        text={translate("markers_loading")}
         visible={!markersToRender.length}
-      />
-      {mapType === 'Yandex' ? (
+      />  */}
+      {mapType === "Yandex" ? (
         <ClusteredYamap
-          ref={node => {
+          ref={(node) => {
             if (node) {
               mapRefYandex = node;
             }
           }}
           clusteredMarkers={
-            isSundraxServer === 'yes'
+            isSundraxServer === "yes"
               ? markersToRender
-              : isSundraxServer === 'no'
+              : isSundraxServer === "no"
               ? markersFromStorage
               : []
           }
           style={styles.map}
-          userLocationIcon={require('../../../assets/icons/UserIc.png')}
+          userLocationIcon={require("../../../assets/icons/UserIc.png")}
           showUserPosition
-          renderMarker={({point, data: marker}, key) => {
-            let iconPath = '';
+          renderMarker={({ point, data: marker }, key) => {
+            let iconPath = "";
             const currentType = MarkerIcons[marker.DeviceType];
             if (currentType) {
               iconPath = currentType[marker.Status];
@@ -856,7 +857,7 @@ const MapScreen = ({route, navigation}) => {
             }
             //console.log(marker);
             if (!iconPath) {
-              console.log('Icon does not exist');
+              console.log("Icon does not exist");
               return;
             }
             if (!marker?.coordinates?.lat) {
@@ -879,11 +880,11 @@ const MapScreen = ({route, navigation}) => {
         <MapView
           ref={mapRefGoogle}
           provider={PROVIDER_GOOGLE}
-          style={{flex: 1}}
+          style={{ flex: 1 }}
           showsCompass={false}
           showsUserLocation
           showsMyLocationButton={false}
-          clusterColor={'#ffffff'}
+          clusterColor={"#ffffff"}
           clusterTextColor={Colors.gray}
           clusterFontFamily={Fonts.mainFontFamily}
           edgePadding={{
@@ -894,14 +895,15 @@ const MapScreen = ({route, navigation}) => {
             longitude: 20,
             latitudeDelta: 100,
             longitudeDelta: 100,
-          }}>
-          {(isSundraxServer === 'yes'
+          }}
+        >
+          {(isSundraxServer === "yes"
             ? markersToRender
-            : isSundraxServer === 'no'
+            : isSundraxServer === "no"
             ? markersFromStorage
             : []
-          )?.map(({point, data: marker}, key) => {
-            let iconPath = '';
+          )?.map(({ point, data: marker }, key) => {
+            let iconPath = "";
             const currentType = MarkerIcons[marker.DeviceType];
             if (currentType) {
               iconPath = currentType[marker.Status];
@@ -909,17 +911,17 @@ const MapScreen = ({route, navigation}) => {
               return (
                 <GoogleMarker
                   key={key}
-                  coordinate={{latitude: 1000000, longitude: 0}}
+                  coordinate={{ latitude: 1000000, longitude: 0 }}
                 />
               );
             }
             //console.log(marker);
             if (!iconPath) {
-              console.log('Icon does not exist');
+              console.log("Icon does not exist");
               return (
                 <GoogleMarker
                   key={key}
-                  coordinate={{latitude: 1000000, longitude: 0}}
+                  coordinate={{ latitude: 1000000, longitude: 0 }}
                 />
               );
             }
@@ -927,7 +929,7 @@ const MapScreen = ({route, navigation}) => {
               return (
                 <GoogleMarker
                   key={key}
-                  coordinate={{latitude: 1000000, longitude: 0}}
+                  coordinate={{ latitude: 1000000, longitude: 0 }}
                 />
               );
             }
@@ -935,13 +937,14 @@ const MapScreen = ({route, navigation}) => {
             return (
               <GoogleMarker
                 key={key}
-                coordinate={{latitude: point.lat, longitude: point.lon}}
+                coordinate={{ latitude: point.lat, longitude: point.lon }}
                 onPress={() => {
                   onMarkerPressed(marker, true);
-                }}>
+                }}
+              >
                 <Image
                   source={iconPath}
-                  style={{width: 33, height: 33}}
+                  style={{ width: 33, height: 33 }}
                   resizeMode="contain"
                 />
               </GoogleMarker>
@@ -949,7 +952,7 @@ const MapScreen = ({route, navigation}) => {
           })}
         </MapView>
       )}
-
+      {/* 
       <BottomMenu
         activeScreen={activeScreen}
         setActiveScreen={setActiveScreen}
@@ -957,17 +960,18 @@ const MapScreen = ({route, navigation}) => {
       />
       <SwipeablePanel
         fullWidth
-        noBar={activeScreen === 'objects'}
+        noBar={activeScreen === "objects"}
         openLarge
         onlyLarge
-        style={activeScreen === 'objects' && {paddingTop: 10}}
-        isEvent={activeScreen === 'objects'}
+        style={activeScreen === "objects" && { paddingTop: 10 }}
+        isEvent={activeScreen === "objects"}
         scrollViewProps={{
           showsVerticalScrollIndicator: false,
         }}
         isActive={!!activeScreen}
-        onClose={() => setActiveScreen('')}>
-        {activeScreen === 'objects' ? (
+        onClose={() => setActiveScreen("")}
+      >
+        {activeScreen === "objects" ? (
           <ObjectsPart
             objects={objects}
             starPressed={starPressed}
@@ -977,9 +981,9 @@ const MapScreen = ({route, navigation}) => {
             searchedObjects={searchedObjects}
             isLoaded={markersToRender.length}
           />
-        ) : activeScreen === 'passports' ? (
+        ) : activeScreen === "passports" ? (
           <PassportsPart passports={passports} />
-        ) : activeScreen === 'events' ? (
+        ) : activeScreen === "events" ? (
           <EventsPart
             events={events}
             sortEvents={sortEvents}
@@ -987,9 +991,9 @@ const MapScreen = ({route, navigation}) => {
             range={eventsRange}
             changeRange={changeEventsRange}
           />
-        ) : activeScreen === 'states' ? (
+        ) : activeScreen === "states" ? (
           <StatesPart states={states} statesInfo={statesInfo} />
-        ) : activeScreen === 'control' ? (
+        ) : activeScreen === "control" ? (
           <ControlPart
             controls={controls}
             controlsModes={controlsModes}
@@ -1003,7 +1007,7 @@ const MapScreen = ({route, navigation}) => {
       <NavigationMenu
         isVisible={modalMenuShow}
         onClose={() => setModalMenuShow(false)}
-      />
+      /> */}
     </View>
   );
 };

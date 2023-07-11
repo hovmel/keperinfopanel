@@ -1,20 +1,19 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {MainNavigation} from './MainNavigation';
-import {LoginScreenNavigation} from './LoginScreenNavigation';
-import {useSelector} from 'react-redux';
-import {signedInSelector} from '../models/user/selectors';
-import {useActionWithPayload} from '../hooks/useAction';
-import {userActions} from '../models/user';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as RNLocalize from 'react-native-localize';
-import {translationGetters} from '../Translations';
-import {useNetInfo} from '@react-native-community/netinfo';
-import NoConnection from '../Screens/NoConnection';
+import React, { useEffect, useMemo, useState } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { MainNavigation } from "./MainNavigation";
+import { LoginScreenNavigation } from "./LoginScreenNavigation";
+import { useSelector } from "react-redux";
+import { signedInSelector } from "../models/user/selectors";
+import { useActionWithPayload } from "../hooks/useAction";
+import { userActions } from "../models/user";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as RNLocalize from "react-native-localize";
+import { useNetInfo } from "@react-native-community/netinfo";
+import NoConnection from "../Screens/NoConnection";
 
 const Stack = createStackNavigator();
 
-const RootNavigation: React.FC<{authenticated: boolean; userData: any}> = ({
+const RootNavigation: React.FC<{ authenticated: boolean; userData: any }> = ({
   authenticated,
   userData,
 }) => {
@@ -37,13 +36,13 @@ const RootNavigation: React.FC<{authenticated: boolean; userData: any}> = ({
 
   useEffect(() => {
     (async () => {
-      let res = await AsyncStorage.getItem('lang');
+      let res = await AsyncStorage.getItem("lang");
       if (!res) {
-        const {languageTag} = RNLocalize.findBestAvailableLanguage([
-          'en',
-          'ru',
+        const { languageTag } = RNLocalize.findBestAvailableLanguage([
+          "en",
+          "ru",
         ]);
-        res = languageTag || 'en';
+        res = languageTag || "en";
       }
 
       setLang(res);
@@ -57,17 +56,18 @@ const RootNavigation: React.FC<{authenticated: boolean; userData: any}> = ({
 
   return (
     <Stack.Navigator
-      headerMode={'none'}
+      headerMode={"none"}
       initialRouteName={
-        authenticated ? 'MainNavigation' : 'LoginScreenNavigation'
-      }>
+        authenticated ? "MainNavigation" : "LoginScreenNavigation"
+      }
+    >
       {!isConnected ? (
-        <Stack.Screen name={'NoConnection'} component={NoConnection} />
+        <Stack.Screen name={"NoConnection"} component={NoConnection} />
       ) : signedIn ? (
-        <Stack.Screen name={'MainNavigation'} component={MainNavigation} />
+        <Stack.Screen name={"MainNavigation"} component={MainNavigation} />
       ) : (
         <Stack.Screen
-          name={'LoginScreenNavigation'}
+          name={"LoginScreenNavigation"}
           component={LoginScreenNavigation}
         />
       )}
