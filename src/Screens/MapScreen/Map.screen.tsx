@@ -753,7 +753,7 @@ const MapScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* {showFilters ? (
+      {showFilters ? (
         <MapFilterOverlay
           mapFilters={mapFilters}
           setMapFilters={setMapFilters}
@@ -797,19 +797,19 @@ const MapScreen = ({ route, navigation }) => {
           </TouchableOpacity>
         </View>
       )}
-      {/*<CircleButton
-  style={styles.accountButton}
-  imageSource={require('../../../assets/icons/account.png')}
-  onPress={() => {
-    setModalMenuShow(true);
-  }}
-/>*/}
-      {/*<CircleButton
-  style={styles.filterButton}
-  imageSource={require('../../../assets/icons/filter.png')}
-  onPress={() => setShowFilters(!showFilters)}
-/>*/}
-      {/* {!activeScreen ? (
+      <CircleButton
+        style={styles.accountButton}
+        imageSource={require("../../../assets/icons/account.png")}
+        onPress={() => {
+          setModalMenuShow(true);
+        }}
+      />
+      <CircleButton
+        style={styles.filterButton}
+        imageSource={require("../../../assets/icons/filter.png")}
+        onPress={() => setShowFilters(!showFilters)}
+      />
+      {!activeScreen ? (
         <CircleButton
           style={styles.rightButton}
           imageSource={require("../../../assets/icons/scan.png")}
@@ -829,8 +829,8 @@ const MapScreen = ({ route, navigation }) => {
         style={{ marginBottom: geolocationError !== undefined ? 90 : 30 }}
         text={translate("markers_loading")}
         visible={!markersToRender.length}
-      />  */}
-      {mapType === "Yandex" ? (
+      />
+      {mapType === "Yandex" && Platform.OS === "android" ? (
         <ClusteredYamap
           ref={(node) => {
             if (node) {
@@ -870,7 +870,7 @@ const MapScreen = ({ route, navigation }) => {
                 key={key}
                 point={point}
                 scale={markerScale}
-                source={iconPath}
+                source={""}
                 onPress={() => onMarkerPressed(marker)}
               />
             );
@@ -915,7 +915,6 @@ const MapScreen = ({ route, navigation }) => {
                 />
               );
             }
-            //console.log(marker);
             if (!iconPath) {
               console.log("Icon does not exist");
               return (
@@ -952,7 +951,7 @@ const MapScreen = ({ route, navigation }) => {
           })}
         </MapView>
       )}
-      {/* 
+
       <BottomMenu
         activeScreen={activeScreen}
         setActiveScreen={setActiveScreen}
@@ -1007,7 +1006,7 @@ const MapScreen = ({ route, navigation }) => {
       <NavigationMenu
         isVisible={modalMenuShow}
         onClose={() => setModalMenuShow(false)}
-      /> */}
+      />
     </View>
   );
 };

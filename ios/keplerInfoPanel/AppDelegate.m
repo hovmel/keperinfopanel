@@ -3,6 +3,8 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <YandexMapsMobile/YMKMapKitFactory.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -47,6 +49,12 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+
+  [GMSServices provideAPIKey:@"AIzaSyD9fooYQ4HgPunsa7fVOmFQ50shHhIGsGc"];
+  [YMKMapKit setLocale:@"ru_RU"];
+  [YMKMapKit setApiKey:@"c94acde6-4b9a-4b9f-a3a9-0af95ad5b0ea"];
+
   return YES;
 }
 
