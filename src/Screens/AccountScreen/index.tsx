@@ -103,7 +103,7 @@ const AccountScreen = () => {
   };
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <ScreensHeader
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -330,7 +330,7 @@ const AccountScreen = () => {
           </>
         </MyModal>
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 };
 

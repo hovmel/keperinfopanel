@@ -1,7 +1,8 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import {ArrowNavigationHeader} from '../../Components/Header/ArrowNavigationHeader';
 import {styles} from './styles';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 const TextInformationScreen = ({route, header, text}) => {
   return (

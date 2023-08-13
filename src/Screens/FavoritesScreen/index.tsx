@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  FlatList,
+  FlatList, SafeAreaView,
 } from 'react-native';
 import {
   deleteObjectFavorite,
@@ -93,7 +93,7 @@ const FavoritesScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScreensHeader
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -112,7 +112,7 @@ const FavoritesScreen = ({navigation}) => {
           />
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

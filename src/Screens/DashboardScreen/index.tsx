@@ -3,7 +3,7 @@ import {
   ActivityIndicator,
   Alert,
   Image,
-  RefreshControl,
+  RefreshControl, SafeAreaView,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -255,7 +255,7 @@ const DashboardScreen = () => {
 
   return (
     <>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.headerRow}>
           <TouchableOpacity
             style={styles.backButton}
@@ -339,7 +339,7 @@ const DashboardScreen = () => {
           style={styles.buttons}
           width={'25%'}
         />
-      </View>
+      </SafeAreaView>
 
       <BoardsControlModal
         isVisible={showBoardsControlPanel}

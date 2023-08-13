@@ -19,6 +19,7 @@ export default StyleSheet.create({
   },
   multiline: {
     height: 150,
+    textAlignVertical: 'top',
   },
   button: {
     alignItems: 'center',

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import Colors from '../../../Constants/Colors';
 import {Fonts} from '../../../Constants/Fonts';
 
@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.mediumFontFamily,
     fontSize: 12,
     color: Colors.lightGray,
-    marginBottom: -4,
+    marginBottom: Platform.OS === 'android' ? -4 : 0,
   },
   professionsRow: {
     flexDirection: 'row',
@@ -98,7 +98,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 15,
-    paddingVertical: 2,
+    paddingVertical: Platform.OS === 'android' ? 2 : 10,
     borderColor: Colors.lightGray,
     marginBottom: 10,
     fontFamily: Fonts.mediumFontFamily,
@@ -106,9 +106,9 @@ export const styles = StyleSheet.create({
     paddingRight: 50,
   },
   eye: {
-    height: 15,
-    width: 30,
-    resizeMode: 'center',
+    height: 20,
+    width: 20,
+    resizeMode: 'contain',
   },
   touchableEye: {
     height: 20,

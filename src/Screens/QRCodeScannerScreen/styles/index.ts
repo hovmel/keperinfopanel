@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
   accountButton: {
     position: 'absolute',
-    top: 20,
+    top: 40,
     right: 16,
     zIndex: 999,
   },

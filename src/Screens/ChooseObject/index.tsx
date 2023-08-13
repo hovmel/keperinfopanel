@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   Animated,
-  Image,
+  Image, SafeAreaView,
   ScrollView,
   Text,
   TextInput,
@@ -97,7 +97,7 @@ const ChooseObject = ({route}) => {
   const microphonePress = () => {};
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <ScrollView style={styles.container}>
         <ScreensHeader />
 
@@ -136,7 +136,7 @@ const ChooseObject = ({route}) => {
       {/*      <TouchableOpacity onPress={microphonePress} style={styles.micButton}>
         <Image source={Microphone} style={styles.mic} />
       </TouchableOpacity>*/}
-    </>
+    </SafeAreaView>
   );
 };
 

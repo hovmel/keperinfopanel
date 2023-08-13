@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import {Platform, StyleSheet} from "react-native";
 import Colors from "../../../Constants/Colors";
 import { Fonts } from "../../../Constants/Fonts";
 
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   },
   backButton: {
     position: "absolute",
-    top: 20,
+    top: Platform.OS === 'android' ? 20 : 40,
     left: 16,
     zIndex: 999,
   },
@@ -92,7 +92,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
 
     position: "absolute",
-    top: 25,
+    top: Platform.OS === 'android' ? 25 : 45,
     left: "25%",
     zIndex: 100,
   },

@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
-import {SafeAreaView, Text, ScrollView} from 'react-native';
+import {Text, ScrollView} from 'react-native';
 import styles from './styles';
 import {ArrowNavigationHeader} from '../../Components/Header/ArrowNavigationHeader';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 interface Props {
   route: any;

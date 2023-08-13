@@ -2,7 +2,6 @@ import React, {FC, ReactElement, ReactNode, useRef, useState} from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
   ScrollView,
   KeyboardAvoidingView,
   TouchableOpacity,
@@ -18,6 +17,7 @@ import useTranslation, {translate} from '../../Translations';
 import {sendSupport} from '../../Utils/API/Support';
 import Colors from '../../Constants/Colors';
 import Toast from 'react-native-toast-message';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 interface Props {
   navigation: any;

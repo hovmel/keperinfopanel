@@ -26,7 +26,7 @@ import LottieView from 'lottie-react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import data from '../StatesScreen/data';
 
-const SelectServer = () => {
+const SelectServer = ({navigation}) => {
   const [showServerNameModal, setShowServerNameModal] =
     useState<Boolean>(false);
   const [newServerName, setNewServerName] = useState<string>('');
@@ -78,9 +78,8 @@ const SelectServer = () => {
     ]);
   };
 
-  const onRead = ({data}) => {
+  const onRead = (data) => {
     setNewServerName(data);
-    setQrModalVisible(false);
     setShowServerNameModal(true);
   };
 
@@ -88,6 +87,11 @@ const SelectServer = () => {
     setServerToDelete(serverName);
     setDeleteModalShow(true);
   };
+
+  const onQrScanPress = () => {
+    navigation.navigate('QRCodeScannerScreen', {onRead, fromScreen: 'SelectServer'});
+
+  }
 
   const cancelDeleting = () => {
     setServerToDelete('');
@@ -177,7 +181,7 @@ const SelectServer = () => {
       <TouchableOpacity
         style={styles.openButton}
         activeOpacity={0.5}
-        onPress={() => setQrModalVisible(true)}>
+        onPress={onQrScanPress}>
         <Text style={styles.openText}>{t('open_qr')}</Text>
       </TouchableOpacity>
       <ScrollView style={styles.wrapper}>
@@ -321,25 +325,6 @@ const SelectServer = () => {
               containerStyle={styles.addButton}
             />
           </View>
-        </View>
-      </Modal>
-
-      <Modal
-        style={styles.modal}
-        isVisible={isQrModalVisible}
-        useNativeDriver
-        onBackdropPress={() => setQrModalVisible(false)}
-        onBackButtonPress={() => setQrModalVisible(false)}
-        animationIn={'fadeIn'}
-        animationOut={'fadeOut'}
-        backdropOpacity={0.5}>
-        <View style={styles.qrWrapper}>
-          <QRCodeScanner
-            reactivate={true}
-            reactivateTimeout={1300}
-            vibrate={false}
-            onRead={onRead}
-          />
         </View>
       </Modal>
     </SafeAreaView>

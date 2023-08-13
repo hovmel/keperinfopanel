@@ -10,7 +10,7 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
-  Alert,
+  Alert, Platform,
 } from 'react-native';
 import Colors from '../../Constants/Colors';
 import useTranslation, {translate} from '../../Translations';
@@ -94,7 +94,7 @@ const Home = () => {
     (async () => {
       console.log('rendering...');
       const serverName = await AsyncStorage.getItem('currentServer');
-      const mapType = (await AsyncStorage.getItem('map')) || 'Yandex';
+      const mapType = (await AsyncStorage.getItem('map')) || Platform.OS === 'android' ? 'Yandex' : 'Google';
       setMap(mapType);
       const isSundraxServer =
         serverName === 'http://sundrax1.zapto.org/QulonWeb/';

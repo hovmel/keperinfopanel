@@ -547,7 +547,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = ULB92CZG76;
+				DEVELOPMENT_TEAM = WYS8LFQX66;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = keplerInfoPanel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -561,7 +561,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.chargeapp.quloncharge;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sundrax.kepler.eng;
 				PRODUCT_NAME = keplerInfoPanel;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -579,7 +579,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = ULB92CZG76;
+				DEVELOPMENT_TEAM = WYS8LFQX66;
 				INFOPLIST_FILE = keplerInfoPanel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -592,7 +592,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.chargeapp.quloncharge;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sundrax.kepler.eng;
 				PRODUCT_NAME = keplerInfoPanel;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

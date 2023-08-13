@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import {
   Image,
-  SafeAreaView,
   View,
   Text,
   TouchableOpacity,
@@ -13,6 +12,7 @@ import LogoImage from '../../../assets/icons/Logo.png';
 import {privacyPolicyText, termsOfPolicyText} from '../../Constants/InfoTexts';
 import Rate, {AndroidMarket} from 'react-native-rate';
 import useTranslation from '../../Translations';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 interface Props {
   navigation: any;

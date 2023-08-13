@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {styles} from './styles';
 import {Component} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {translate} from '../../Translations';
 import LottieView from 'lottie-react-native';
@@ -21,11 +21,11 @@ const QRCodeScannerScreen = props => {
     setScannedText(Id);
     console.log('Qr code scanned');
     params.onRead(Id);
-    navigation.navigate('Map');
+    navigation.navigate(params?.fromScreen || 'Map');
   };
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <CircleButton
         style={styles.accountButton}
         imageSource={require('../../../assets/icons/account.png')}
@@ -76,7 +76,7 @@ const QRCodeScannerScreen = props => {
         isVisible={modalMenuShow}
         onClose={() => setModalMenuShow(false)}
       />
-    </>
+    </SafeAreaView>
   );
 };
 

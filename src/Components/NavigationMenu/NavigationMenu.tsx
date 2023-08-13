@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View, Text, Image} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, Text, Image, Platform} from 'react-native';
 import Modal from 'react-native-modal';
 import Colors from '../../Constants/Colors';
 import {Fonts} from '../../Constants/Fonts';
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRightWidth: 1,
     borderRightColor: Colors.lightGray,
-    paddingTop: 30,
+    paddingTop: Platform.OS === 'android' ? 30 : 60,
     paddingHorizontal: 22,
   },
   infoBlock: {

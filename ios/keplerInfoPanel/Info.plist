@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string> 
+	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Kepler InfoPanel</string>
 	<key>CFBundleExecutable</key>
@@ -37,8 +37,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Select photos from library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Your message to user when the camera is accessed for the first time</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -49,6 +47,8 @@
 	<string>To make ability find yourself on map</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To make ability find yourself on map</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Select photos from library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>

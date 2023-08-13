@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {
   ActivityIndicator,
   Image,
-  RefreshControl,
+  RefreshControl, SafeAreaView,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -249,7 +249,7 @@ const Index = () => {
 
   return (
     <>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <ScreensHeader
           searchValue={searchValue}
           setSearchValue={setSearchValue}
@@ -364,7 +364,7 @@ const Index = () => {
             />
           </View>
         )}
-      </View>
+      </SafeAreaView>
       <DatePicker
         modal
         title={'Starting from:'}

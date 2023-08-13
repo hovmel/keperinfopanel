@@ -11,9 +11,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.ultraLightGray,
     borderRadius: 10,
-    textAlignVertical: 'top',
-    paddingTop: 10,
-    height: 40,
+    paddingVertical: 10,
   },
   activeInput: {
     borderColor: Colors.main,
